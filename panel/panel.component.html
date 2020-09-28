@@ -1,1 +1,29 @@
-<p>panel works!</p>
+<!-- TOPBARNAV -->
+<gdev-topbar></gdev-topbar>
+
+
+<mat-drawer-container
+id="panel_container"
+strechHeight
+class="dash-container" 
+hasBackdrop="false">
+    
+
+    <mat-drawer
+    #sideNav
+    class="side-nav"
+    mode="side"
+    [opened]="!responsive.small"
+    position="start"
+    gdev-color
+    [background]="'dark'"
+    >
+        <!-- SIDENAV -->
+        <gdev-sidenav [structure]="sidenavStructure"></gdev-sidenav>
+    </mat-drawer>
+
+    
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
