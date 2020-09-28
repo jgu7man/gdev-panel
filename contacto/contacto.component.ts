@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DatosContactoModel } from './contacto.model';
-import { GdevStoreService } from '../../gdev-store/panel/gdev-store.service';
+import { GdevMainService } from '../gdev-main.service';
 import { Ubication, GeoCords } from 'src/app/Gdev-Tools/maps/maps.interface';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'gdev-contacto',
@@ -21,14 +22,14 @@ export class ContactoComponent implements OnInit {
   }
 
   constructor (
-    public storeS: GdevStoreService
+    public storeS: GdevMainService,
+    private fs: AngularFirestore
   ) {
     this.datosContacto = new DatosContactoModel('','','','','','','', '',this.ubication, this.cords)
    }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.getDatos()
-    
   }
 
   onUbicationChanges(ubication: Ubication) {
@@ -36,7 +37,7 @@ export class ContactoComponent implements OnInit {
   }
   
   async getDatos() {
-    this.datosContacto = await this.storeS.getStoreContact()
+    this.datosContacto = await this.storeS.getContactDatos()
     if ( this.datosContacto.maps ) { this.cords = this.datosContacto.maps }
   }
 

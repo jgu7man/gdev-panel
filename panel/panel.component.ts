@@ -66,12 +66,12 @@ export class PanelComponent implements OnInit {
       routeId: 'clientes',
       route: 'clientes',
       childs: [
-        {
-          name: 'Mensajes',
-          route: 'mensajes',
-          routeId: 'mensajes'
-        }
       ]
+    },
+    {
+      name: 'Mails',
+      route: 'mails',
+      routeId: 'mails'
     },
     {
       name: 'Admins',
