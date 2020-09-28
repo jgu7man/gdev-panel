@@ -25,7 +25,7 @@ export class AddAdminComponent implements OnInit {
 
   onSubmit() {
     console.log(this.admin);
-    this.adminS.createAdmin( this.admin ).then( () => {
+    this.adminS.pretendCreateAdmin( this.admin ).then( () => {
       this.dialog.close()
     })
   }

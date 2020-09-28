@@ -6,6 +6,7 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { LoginComponent } from './login/login.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { MailsComponent } from './mails/mails.component';
+import { SingupAdminComponent } from './admin/singup-admin/singup-admin.component';
 
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
     },
   ] },
   { path: 'login', component: LoginComponent },
+  { path: 'create', component: SingupAdminComponent },
 ];
 
 @NgModule({

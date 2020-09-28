@@ -18,6 +18,7 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ClienteComponent } from './clientes/cliente/cliente.component';
 import { MailsComponent } from './mails/mails.component';
+import { SingupAdminComponent } from './admin/singup-admin/singup-admin.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { MailsComponent } from './mails/mails.component';
     ContactoComponent,
     ClientesComponent,
     ClienteComponent,
-    MailsComponent
+    MailsComponent,
+    SingupAdminComponent
   ],
   imports: [
     CommonModule,

@@ -9,15 +9,20 @@ import { Router } from '@angular/router';
 import { AlertService } from '../../Gdev-Tools/alerts/alert.service';
 import { ErrorAlertModel } from '../../Gdev-Tools/alerts/alerts.model';
 import * as firebase from 'firebase/app';
+import { GdevMainService } from '../gdev-main.service';
+import { DatosContactoModel } from '../contacto/contacto.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminsService {
 
+  store:DatosContactoModel
+
   admin$ = new Observable<any>()
   currentAdmin: AdminInterface
   admins$: Observable<AdminInterface[]> = new Observable()
+  adminList: AdminInterface[] = []
 
   roles: AdminRol[] = [
     { value: 'admin', viewValue: 'Administrador' },
@@ -30,44 +35,95 @@ export class AdminsService {
     private fs: AngularFirestore,
     private _cache: CacheService,
     private router: Router,
-    private _alert: AlertService
+    private _alert: AlertService,
+    private _main: GdevMainService
   ) {
     this.getAdmins()
     this.getCurrentAdmin()
     this.admin$ = this.auth.authState.pipe(
       switchMap( admin => {
         return admin
-          ? this.fs.doc<AdminInterface>( `admins/${ admin.uid }` ).valueChanges()
+        ? this.fs.doc<AdminInterface>( `admins/${ admin.uid }` ).valueChanges()
           : of(null)
-      })
-    )
-  }
+        })
+        )
+      }
 
-
+      
   getCurrentAdmin() {
     this.admin$.subscribe( admin => {
       console.log(admin);
       this.currentAdmin = admin
     })
   }
+
+  get adminsRef() {
+    return this.fs.collection('admins').ref
+  }
   
   
-  async createAdmin(admin: AdminInterface) {
-    try {
-        var nuevoAdmin =
-          await this.auth.createUserWithEmailAndPassword( admin.email, admin.password )
+  async pretendCreateAdmin( admin: AdminInterface) {
+    this.store = await this._main.getContactDatos()
+    var adminFinded = this.adminList
+      .find( a => a.email == admin.email )
+    
+      if ( adminFinded ) {
+        this._alert.sendMessageAlert('Este correo ya está en uso, por favor elige otro')
+      } else {
+
+        this.adminsRef.doc(admin.email).set(admin)
+
+    
+        this.fs.collection( 'mails' ).ref.add( {
+          to: admin.email,
+          message: {
+            subject: 'Invitación a administrar ' + this.store.store_name,
+            text: `Se te ha invitado a ser ${ admin.rol } de ${ this.store.store_name }\n
+            Por favor da click en el siguiente enlace:\n
+            https://${this.store.store_name}.web.app/panel/create`
+          }
+        } )
+        
+        this._alert.sendFloatNotification('Se ha envido un correo al usuario nuevo')
+      }
+      return
+    
+  }
+
+
+  
+  async createAdmin(email: string, password: string) {
+    
+    const admin: AdminInterface = await ( await this.adminsRef.doc( email )
+      .get() ).data() as AdminInterface
+    
+    if ( !admin ) {
+      this._alert.sendMessageAlert( 'Lo sentimos, no esperamos una confirmación con esta dirección de email. Revisa que esté bien o itenta con otra. Si aún así no logras ingresar, ponte en contacto con un administrador del sitio' )
+    } else {
+
+      try {
+
+        var nuevoAdmin = await this.auth
+          .createUserWithEmailAndPassword( email, password );
         admin.uid = nuevoAdmin.user.uid
         
-      this.updateUserData( admin );
-      ( await this.auth.currentUser ).sendEmailVerification();
-
-      return 
-
-      } catch (error) {
+        this.updateUserData( admin )
+        this.adminsRef.doc(email).delete()
+        
+        this.router.navigate(['/panel'])
+        return
+      } catch ( error ) {
         console.error( error );
         this.setErrorMsj( error )
       }
+    }
   }
+
+
+
+
+
+
 
   async adminLogin( email, pwd ) {
     try {
@@ -80,26 +136,12 @@ export class AdminsService {
     }
   }
 
-  private async updateUserData( { uid, email, displayName }: AdminInterface ) {
-    // Buscar el usuario en la base de datos de firebase
+  private async updateUserData( admin: AdminInterface ) {
     const adminRef: AngularFirestoreDocument<AdminInterface>
-      = this.fs.doc( `admins/${ uid }` );
-    
-    const adminDoc = await this.fs.collection( 'admins' ).ref.doc( uid ).get()
-    const dateRegist = new Date()
-
-    // Si no existe, se agrega fecha de registro
-    if ( adminDoc.exists ) {
-      var data = { uid, email, displayName }
-      adminRef.set( data, { merge: true } )
-      this._cache.updateData( 'admin', adminDoc.data() )
-    } else {
-      var newData = { uid, email, displayName, dateRegist }
-      adminRef.set( newData, { merge: true } )
-      this._cache.updateData( 'admin', newData )
-    }
-
-
+      = this.fs.doc( `admins/${ admin.uid }` );
+    console.log(admin);
+    adminRef.set( admin, { merge: true } )
+    this._cache.updateData( 'admin', admin )
   }
 
 
@@ -117,7 +159,7 @@ export class AdminsService {
 
   getAdmins() {
     this.admins$ = this.fs.collection<AdminInterface>( 'admins' ).valueChanges()
-    this.admins$.subscribe(res => console.log(res))
+    this.admins$.subscribe(res => this.adminList = res)
   }
 
 
