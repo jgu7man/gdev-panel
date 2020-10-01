@@ -18,7 +18,7 @@ export class PanelComponent implements OnInit {
 
   sidenavStructure: SidenavNode[] = [
     {
-      name: 'Incio',
+      name: 'Inicio',
       routeId: ['contacto'],
       childs: [
         {
@@ -74,7 +74,7 @@ export class PanelComponent implements OnInit {
       routeId: 'mails'
     },
     {
-      name: 'Admins',
+      name: 'Admin',
       routeId: 'admins',
       route: 'admins'
     },
