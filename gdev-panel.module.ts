@@ -19,6 +19,9 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { ClienteComponent } from './clientes/cliente/cliente.component';
 import { MailsComponent } from './mails/mails.component';
 import { SingupAdminComponent } from './admin/singup-admin/singup-admin.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { IdentidadComponent } from './inicio/identidad/identidad.component';
+import { BienvenidaComponent } from './inicio/bienvenida/bienvenida.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import { SingupAdminComponent } from './admin/singup-admin/singup-admin.componen
     ClientesComponent,
     ClienteComponent,
     MailsComponent,
-    SingupAdminComponent
+    SingupAdminComponent,
+    InicioComponent,
+    IdentidadComponent,
+    BienvenidaComponent
   ],
   imports: [
     CommonModule,

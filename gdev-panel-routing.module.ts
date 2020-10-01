@@ -7,14 +7,20 @@ import { LoginComponent } from './login/login.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { MailsComponent } from './mails/mails.component';
 import { SingupAdminComponent } from './admin/singup-admin/singup-admin.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { IdentidadComponent } from './inicio/identidad/identidad.component';
+import { BienvenidaComponent } from './inicio/bienvenida/bienvenida.component';
 
 
 
 const routes: Routes = [
   { path: '', component: PanelComponent, children: [
-    { path: '', component: ContactoComponent },
+    { path: '', pathMatch: 'full', redirectTo: 'inicio' },
+    { path: 'inicio', component: InicioComponent, children: [
+      { path: '', component: BienvenidaComponent },
+      { path: 'identidad', component: IdentidadComponent },
+    ] },
     { path: 'admins', component: AdminComponent },
-    { path: 'contacto', component: ContactoComponent },
     { path: 'clientes', component: ClientesComponent },
     { path: 'mails', component: MailsComponent },
     {

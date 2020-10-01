@@ -19,21 +19,22 @@ export class PanelComponent implements OnInit {
   sidenavStructure: SidenavNode[] = [
     {
       name: 'Inicio',
-      routeId: ['contacto'],
+      routeId: [ 'indentidad' ],
+      route: 'inicio',
       childs: [
         {
-          name: 'Contacto',
-          route: 'contacto',
+          name: 'Indentidad',
+          route: 'inicio/identidad',
         },
       ]
     },
-    {
-      name: 'Diseño',
-      routeId: [ 'hero' ],
-      childs: [
+    // {
+    //   name: 'Diseño',
+    //   routeId: [ 'hero' ],
+    //   childs: [
         
-      ]
-    },
+    //   ]
+    // },
     {
       name: 'Tienda',
       routeId: ['config', 'categories', 'productos', 'pedidos', 'slider'],
