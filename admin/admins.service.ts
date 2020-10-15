@@ -136,12 +136,12 @@ export class AdminsService {
     }
   }
 
-  private async updateUserData( admin: AdminInterface ) {
+  private async updateUserData( {uid, email, displayName, rol}: AdminInterface ) {
     const adminRef: AngularFirestoreDocument<AdminInterface>
-      = this.fs.doc( `admins/${ admin.uid }` );
-    console.log(admin);
-    adminRef.set( admin, { merge: true } )
-    this._cache.updateData( 'admin', admin )
+      = this.fs.doc( `admins/${ uid }` );
+    console.log( { uid, email });
+    adminRef.set( { uid, email }, { merge: true } )
+    this._cache.updateData( 'admin', { uid, email, displayName, rol } )
   }
 
 

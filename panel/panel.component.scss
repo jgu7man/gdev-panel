@@ -2,3 +2,13 @@ mat-drawer {
     width: 15%;
     max-width: 200px;
 }
+
+mat-drawer-container {
+    height: 90vh;
+    position: relative !important;
+}
+
+gdev-topbar {
+    position: relative;
+
+}
