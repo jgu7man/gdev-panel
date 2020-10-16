@@ -47,8 +47,10 @@
                                 </mat-form-field>                        
                             </mat-card-content>
                             <mat-card-actions>
-                                <button mat-button
+                                <button 
                                 (click)="mailS.saveTemplate('newOrder', newOrder)"
+                                mat-flat-button
+                                color="primary"
                                 >Guardar</button>
                             </mat-card-actions>
                         </form>
@@ -99,8 +101,10 @@
                                 </mat-form-field>  
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button
+                            <button 
                             (click)="mailS.saveTemplate('cancelRequest', cancelRequest)"
+                            mat-flat-button
+                            color="primary"
                             >Guardar</button>
                         </mat-card-actions>
                     </mat-card>
@@ -156,8 +160,10 @@
                                 </mat-form-field>  
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button
+                            <button 
                             (click)="mailS.saveTemplate('successOrder', successOrder)"
+                            mat-flat-button
+                            color="primary"
                             >Guardar</button>
                         </mat-card-actions>
                     </mat-card>
@@ -200,8 +206,10 @@
                                 </mat-form-field>  
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button
+                            <button 
                             (click)="mailS.saveTemplate('sendingOrder', sendingOrder)"
+                            mat-flat-button
+                            color="primary"
                             >Guardar</button>
                         </mat-card-actions>
                     </mat-card>
