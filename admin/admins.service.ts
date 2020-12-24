@@ -4,10 +4,10 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { AngularFireAuth } from '@angular/fire/auth';
 import { switchMap } from 'rxjs/operators';
 import { AdminInterface, AdminRol } from './admin.model';
-import { CacheService } from '../../Gdev-Tools/cache/cache.service';
+import { CacheService } from '../../gdev-tools/cache/cache.service';
 import { Router } from '@angular/router';
-import { AlertService } from '../../Gdev-Tools/alerts/alert.service';
-import { ErrorAlertModel } from '../../Gdev-Tools/alerts/alerts.model';
+import { AlertService } from '../../gdev-tools/alerts/alert.service';
+import { ErrorAlertModel } from '../../gdev-tools/alerts/alerts.model';
 import * as firebase from 'firebase/app';
 import { GdevMainService } from '../gdev-main.service';
 import { DatosContactoModel } from '../contacto/contacto.model';

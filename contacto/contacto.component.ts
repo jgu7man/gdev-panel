@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatosContactoModel } from './contacto.model';
 import { GdevMainService } from '../gdev-main.service';
-import { Ubication, GeoCords } from 'src/app/Gdev-Tools/maps/maps.interface';
+import { Ubication, GeoCords } from 'src/app/gdev-tools/maps/maps.interface';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({

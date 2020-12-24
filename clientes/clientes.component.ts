@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { MatSelectionList } from '@angular/material/list';
-import { TextService } from 'src/app/Gdev-Tools/text/gdev-text.service';
+import { TextService } from 'src/app/gdev-tools/text/gdev-text.service';
 import { Sort } from '@angular/material/sort';
 import { ClienteModel } from '../../gdev-store/public/clientes/cliente.model';
 import { ClientesService } from '../../gdev-store/public/clientes/clientes.service';

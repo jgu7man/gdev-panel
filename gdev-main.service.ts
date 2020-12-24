@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { DatosContactoModel } from './contacto/contacto.model';
-import { AlertService } from '../Gdev-Tools/alerts/alert.service';
+import { AlertService } from '../gdev-tools/alerts/alert.service';
 
 @Injectable({
   providedIn: 'root'

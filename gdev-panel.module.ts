@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material.module';
-import { GdevToolsModule } from '../Gdev-Tools/gdev-tools.module';
+import { GdevToolsModule } from '../gdev-tools/gdev-tools.module';
 import { GdevComponentsModule } from '../gdev-components/gdev-components.module';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 

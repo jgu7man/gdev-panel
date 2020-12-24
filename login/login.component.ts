@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GdevLoginFields } from 'src/app/Gdev-Tools/gdev-login/components/login-card/login-card.component';
+import { GdevLoginFields } from 'src/app/gdev-tools/gdev-login/components/login-card/login-card.component';
 import { AdminsService } from '../admin/admins.service';
 
 @Component({

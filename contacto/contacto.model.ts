@@ -1,4 +1,4 @@
-import { GeoCords, Ubication } from 'src/app/Gdev-Tools/maps/maps.interface';
+import { GeoCords, Ubication } from 'src/app/gdev-tools/maps/maps.interface';
 export class DatosContactoModel {
     constructor (
         public store_name: string,

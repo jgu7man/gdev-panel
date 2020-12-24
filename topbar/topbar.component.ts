@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NavbarMenuNode } from 'src/app/Gdev-Tools/navbar/navbar.component';
-import { NavbarService } from 'src/app/Gdev-Tools/navbar/navbar.service';
+import { NavbarMenuNode } from 'src/app/gdev-tools/navbar/navbar.component';
+import { NavbarService } from 'src/app/gdev-tools/navbar/navbar.service';
 import { AdminsService } from '../admin/admins.service';
 import { debounceTime } from 'rxjs/operators';
 import { Router } from '@angular/router';
