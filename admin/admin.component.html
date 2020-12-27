@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col s12">
                     <h4>Administradores <span>
-                        <button mat-icon-button (click)="openAddDialog()">
+                        <button mat-icon-button color="primary" (click)="openAddDialog()">
                             <i class="fas fa-plus fa-lg"></i>
                         </button>
                     </span></h4>
@@ -23,11 +23,14 @@
                         <mat-list-option 
                         *ngFor="let admin of adminS.admins$ | async"
                         [value]="admin"
-                        [disabled]="admin.displayName == 'marxadigital'"
+                        [disabled]="admin.email == 'jguzman@marxadigital.com'"
                         >
-                            <span>{{admin.displayName}}</span>
+                            <span>
+                                <div mat-line>{{admin.displayName}}</div>
+                                <div mat-line>{{admin.email}}</div>
+                            </span>
                             <span>{{admin.rol}}</span>
-                            <span *ngIf="admin.displayName != 'marxadigital'">
+                            <span *ngIf="admin.email != 'jguzman@marxadigital.com'">
                                 <button mat-icon-button [mat-menu-trigger-for]="adminMenu">
                                     <i class="fas fa-ellipsis-v"></i>   
                                 </button>

@@ -19,16 +19,14 @@ export class TopbarComponent implements OnInit {
     public login: AdminsService,
     public navbarService: NavbarService,
     public router: Router
-  ) { }
+  ) { 
+
+    this.login.admin$.subscribe( admin => {
+      if ( !admin ) { this.router.navigate(['/panel/login']) }
+    })
+  }
 
   async ngOnInit() {
-    this.login.admin$.pipe(
-      debounceTime(500)
-    ).subscribe( admin => {
-      if ( !admin ) {
-        this.router.navigate(['/panel/login'])
-      }
-    })
   }
 }
 

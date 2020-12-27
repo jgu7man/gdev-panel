@@ -132,7 +132,13 @@ export class AdminsService {
       return this.updateUserData( credential.user )
     } catch ( error ) {
       console.log( error )
-      this.setErrorMsj(error)
+      if ( error.code === 'auth/user-not-found' ) {
+        this._alert.sendMessageAlert( 'Correo electrónico no identificado' )
+      } else if ( error.code === 'auth/wrong-password') {
+        this._alert.sendMessageAlert( 'Contraseña incorrecta' )
+      } else {
+        this.setErrorMsj(error)
+      }
     }
   }
 
@@ -159,7 +165,10 @@ export class AdminsService {
 
   getAdmins() {
     this.admins$ = this.fs.collection<AdminInterface>( 'admins' ).valueChanges()
-    this.admins$.subscribe(res => this.adminList = res)
+    this.admins$.subscribe( res => {
+      console.log( res )
+      this.adminList = res
+    } )
   }
 
 

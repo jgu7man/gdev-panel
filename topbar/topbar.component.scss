@@ -15,9 +15,14 @@
 }
 
 .logo_content {
-    width: 20%;
+    width: 200px;
+    padding: 7% 6% 6.5% 0;
+    position: relative;
     img {
         width: 100%;
+        transform: translateY(-50%);
+        top: 50%;
+        position: absolute;
     }
 }
 

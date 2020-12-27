@@ -22,6 +22,8 @@ import { SingupAdminComponent } from './admin/singup-admin/singup-admin.componen
 import { InicioComponent } from './inicio/inicio.component';
 import { IdentidadComponent } from './inicio/identidad/identidad.component';
 import { BienvenidaComponent } from './inicio/bienvenida/bienvenida.component';
+import { CalladminBoxComponent } from './admin/calladmin-box/calladmin-box.component';
+import { InitComponent } from './init/init.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { BienvenidaComponent } from './inicio/bienvenida/bienvenida.component';
     SingupAdminComponent,
     InicioComponent,
     IdentidadComponent,
-    BienvenidaComponent
+    BienvenidaComponent,
+    CalladminBoxComponent,
+    InitComponent
   ],
   imports: [
     CommonModule,
@@ -50,6 +54,7 @@ import { BienvenidaComponent } from './inicio/bienvenida/bienvenida.component';
     GdevToolsModule,
     GdevComponentsModule,
     NgxMaterialTimepickerModule
-  ]
+  ],
+  entryComponents: [CalladminBoxComponent]
 })
 export class GdevPanelModule { }

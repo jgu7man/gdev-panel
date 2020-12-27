@@ -10,6 +10,7 @@ import { SingupAdminComponent } from './admin/singup-admin/singup-admin.componen
 import { InicioComponent } from './inicio/inicio.component';
 import { IdentidadComponent } from './inicio/identidad/identidad.component';
 import { BienvenidaComponent } from './inicio/bienvenida/bienvenida.component';
+import { InitComponent } from './init/init.component';
 
 
 
@@ -30,6 +31,9 @@ const routes: Routes = [
   ] },
   { path: 'login', component: LoginComponent },
   { path: 'create', component: SingupAdminComponent },
+  { path: 'init', component: InitComponent, children: [
+    
+  ]}
 ];
 
 @NgModule({

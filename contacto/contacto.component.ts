@@ -22,7 +22,7 @@ export class ContactoComponent implements OnInit {
   }
 
   constructor (
-    public storeS: GdevMainService,
+    public store_: GdevMainService,
     private fs: AngularFirestore
   ) {
     this.datosContacto = new DatosContactoModel('','','','','','','', '',this.ubication, this.cords)
@@ -37,7 +37,8 @@ export class ContactoComponent implements OnInit {
   }
   
   async getDatos() {
-    this.datosContacto = await this.storeS.getContactDatos()
+    this.datosContacto = await this.store_.getContactDatos()
+    console.log( this.datosContacto )
     if ( this.datosContacto.maps ) { this.cords = this.datosContacto.maps }
   }
 

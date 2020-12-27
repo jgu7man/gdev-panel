@@ -14,34 +14,42 @@
                     </mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
-                    <mat-form-field>
-                        <mat-label>Nombre de la tienda</mat-label>
-                        <input matInput type="text"name="store_name"
-                        [(ngModel)]="datosContacto.store_name"
-                        >
-                    </mat-form-field>
-                    <!-- <mat-form-field>
-                        <mat-label>Teléfono</mat-label>
-                        <input matInput type="text"name="phone"
-                        [(ngModel)]="datosContacto.phone"
-                        >
-                    </mat-form-field> -->
-
-
-                    <mat-form-field>
-                        <mat-label>Whatsapp</mat-label>
-                        <input matInput type="text"name="whatsapp"
-                        [(ngModel)]="datosContacto.whatsapp"
-                        placeholder="52 312 180 5955"
-                        >
-                        <mat-hint>Incluye al principio los número de área de tu país al principio. Ejemplo: Para México es 52 </mat-hint>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Email</mat-label>
-                        <input matInput type="text"name="email"
-                        [(ngModel)]="datosContacto.email"
-                        >
-                    </mat-form-field>
+                    <div class="row">
+                        
+                        <div class="col s12 m6">
+                            <mat-form-field>
+                                <mat-label>Nombre de la tienda</mat-label>
+                                <input matInput type="text"name="store_name"
+                                [(ngModel)]="datosContacto.store_name"
+                                >
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Teléfono</mat-label>
+                                <input matInput type="text"name="phone"
+                                [(ngModel)]="datosContacto.phone"
+                                >
+                            </mat-form-field>
+                        </div>
+    
+    
+                        <div class="col s12 m6">
+                            <mat-form-field>
+                                <mat-label>Whatsapp</mat-label>
+                                <input matInput type="text"name="whatsapp"
+                                [(ngModel)]="datosContacto.whatsapp"
+                                placeholder="52 312 180 5955"
+                                >
+                                <mat-hint>Incluye al principio los número de área de tu país al principio. Ejemplo: Para México es 52 </mat-hint>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Email</mat-label>
+                                <input matInput type="text"name="email"
+                                [(ngModel)]="datosContacto.email"
+                                >
+                            </mat-form-field>
+                        </div>
+                        
+                    </div>
                     
                     
                     
@@ -147,7 +155,7 @@
                 <mat-card-actions
                 style="display: flex; justify-content: center;">
                     <button mat-raised-button
-                    (click)="storeS.addContactDatos(datosContacto)"
+                    (click)="store_.addContactDatos(datosContacto)"
                     >Guardar</button>
                 </mat-card-actions>
             </mat-card>
