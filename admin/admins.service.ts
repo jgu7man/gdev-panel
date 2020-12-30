@@ -165,10 +165,7 @@ export class AdminsService {
 
   getAdmins() {
     this.admins$ = this.fs.collection<AdminInterface>( 'admins' ).valueChanges()
-    this.admins$.subscribe( res => {
-      console.log( res )
-      this.adminList = res
-    } )
+    this.admins$.subscribe( res => this.adminList = res )
   }
 
 

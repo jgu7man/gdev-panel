@@ -4,8 +4,12 @@ mat-drawer {
 }
 
 mat-drawer-container {
-    height: 90vh;
+    // height: 90vh;
     position: relative !important;
+}
+
+mat-drawer-content {
+    top: 0;
 }
 
 gdev-topbar {

@@ -5,6 +5,8 @@ import { ColorService } from '../../gdev-tools/color/color.service';
 import { AlertService } from '../../gdev-tools/alerts/alert.service';
 import { GdevMainService } from '../gdev-main.service';
 import { Router } from '@angular/router';
+import { AdminsService } from '../admin/admins.service';
+import { distinctUntilChanged, distinct, distinctUntilKeyChanged } from 'rxjs/operators';
 
 
 @Component({
@@ -19,14 +21,22 @@ export class PanelComponent implements OnInit {
     private _color: ColorService,
     private _alert: AlertService,
     private _main: GdevMainService,
-    private _router: Router
+    private _router: Router,
+    private _auth: AdminsService,
   ) {
 
-    this._main.getContactDatos()
-      .catch( () => {
-        this._router.navigate( [ '/panel/inicio/identidad' ] )
-        this._alert.sendMessageAlert('Es necesario llenar los datos identidad del sitio para comenzar')
-      } )
+    this._auth.admin$.pipe( distinctUntilChanged(
+      ( x, y ) =>  x  && x.uid === y.uid
+    ))
+      .subscribe( auth => {
+        if ( auth ) {
+          this._main.getContactDatos()
+            .catch( () => {
+              // this._router.navigate( [ '/panel/inicio/identidad' ] )
+              this._alert.sendMessageAlert('Es necesario llenar los datos identidad del sitio para comenzar')
+            } )
+        }
+      })
 
     if ( this._alert.messageAlert$ ) {
       if ( this._color.ColorPalette ) {
@@ -35,14 +45,13 @@ export class PanelComponent implements OnInit {
           'bg2': '#A7BCC4',
           'bg3': '#F9E8E1',
           "primary": '#29B7FE',
-          "acent": '#FC712B',
+          "accent": '#FC712B',
           'dark': '#001419',
           'complement1': '#0384C5',
         }
       }
 
       var favicon: HTMLLinkElement = document.querySelector( '[type="image/x-icon"]' )
-      console.log( favicon )
       favicon.href = 'app/gdev-panel/assets/img/gdev-icono-trans-1x1.png'
 
     } else {
