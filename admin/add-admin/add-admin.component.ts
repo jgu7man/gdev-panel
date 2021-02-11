@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminInterface, AdminRol } from '../admin.model';
 import { AdminsService } from '../admins.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { AlertService } from 'src/app/gdev-tools/alerts/alert.service';
 
 @Component({
   templateUrl: './add-admin.component.html',
@@ -17,7 +18,8 @@ export class AddAdminComponent implements OnInit {
 
   constructor (
     public adminS: AdminsService,
-    public dialog: MatDialogRef<AddAdminComponent>
+    public dialog: MatDialogRef<AddAdminComponent>,
+    private _alert: AlertService,
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +29,8 @@ export class AddAdminComponent implements OnInit {
     console.log(this.admin);
     this.adminS.pretendCreateAdmin( this.admin ).then( () => {
       this.dialog.close()
+    } ).catch( error => {
+      this._alert.sendError('Error al registrar el admin', error)
     })
   }
 

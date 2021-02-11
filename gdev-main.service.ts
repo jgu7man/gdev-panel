@@ -34,7 +34,7 @@ export class GdevMainService {
   }
 
   async getContactDatos() {
-    var doc = await this.fs.collection( '_main' ).ref.doc( 'datos_contacto' ).get()
+    var doc = await this.fs.collection( '_admin' ).ref.doc( 'datos_contacto' ).get()
     if ( doc.exists ) {
       return doc.data() as DatosContactoModel
     } else {
@@ -43,7 +43,7 @@ export class GdevMainService {
   }
 
   async getStoreData() {
-    var doc = await this.fs.collection( '_main' ).ref.doc( 'store_data' ).get()
+    var doc = await this.fs.collection( '_admin' ).ref.doc( 'store_data' ).get()
     if ( doc.exists ) {
       return doc.data() as StoreModel
     } else {
