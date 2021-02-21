@@ -18,18 +18,18 @@ export class GdevMainService {
     private _alert: AlertService,
     private _router: Router
   ) {
-    
+
    }
-  
+
   addSiteInfo() {
-    
+
   }
 
   async addContactDatos( datos: DatosContactoModel ) {
-    
+
     await this.fs.collection( '_admin' ).ref.doc( 'datos_contacto' )
       .set( { ...datos }, { merge: true } )
-    
+
     this._alert.sendFloatNotification('Datos guardados')
   }
 
@@ -43,7 +43,7 @@ export class GdevMainService {
   }
 
   async getStoreData() {
-    var doc = await this.fs.collection( '_admin' ).ref.doc( 'store_data' ).get()
+    var doc = await this.fs.collection( '_admin' ).ref.doc( 'datos_contacto' ).get()
     if ( doc.exists ) {
       return doc.data() as StoreModel
     } else {
