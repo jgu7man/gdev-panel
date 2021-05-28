@@ -77,7 +77,7 @@ export class PanelComponent implements OnInit {
     //   name: 'Diseño',
     //   routeId: [ 'hero' ],
     //   childs: [
-        
+
     //   ]
     // },
     {

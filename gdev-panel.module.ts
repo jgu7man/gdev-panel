@@ -24,6 +24,8 @@ import { IdentidadComponent } from './inicio/identidad/identidad.component';
 import { BienvenidaComponent } from './inicio/bienvenida/bienvenida.component';
 import { CalladminBoxComponent } from './admin/calladmin-box/calladmin-box.component';
 import { InitComponent } from './init/init.component';
+import { BrandContentComponent } from './inicio/brand-content/brand-content.component';
+import { MxStorageModule } from '@marxa/storage-v9';
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import { InitComponent } from './init/init.component';
     IdentidadComponent,
     BienvenidaComponent,
     CalladminBoxComponent,
-    InitComponent
+    InitComponent,
+    BrandContentComponent
   ],
   imports: [
     CommonModule,
@@ -53,7 +56,8 @@ import { InitComponent } from './init/init.component';
     MaterialModule,
     GdevToolsModule,
     GdevComponentsModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    MxStorageModule
   ],
   entryComponents: [CalladminBoxComponent]
 })

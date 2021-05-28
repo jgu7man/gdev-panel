@@ -7,6 +7,8 @@ import { CalladminBoxComponent } from './admin/calladmin-box/calladmin-box.compo
 import { MessageAlertModel } from '../gdev-tools/alerts/alerts.model';
 import { Router } from '@angular/router';
 import { StoreModel } from './models/store.model';
+import { iBrand } from './inicio/brand-content/brand.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -49,5 +51,16 @@ export class GdevMainService {
     } else {
       throw {message:'No data geted' }
     }
+  }
+
+  async addBrandInfo(brandInfo: iBrand) {
+    console.log( brandInfo )
+    this.fs.collection('_admin').doc('brand_info')
+      .set(brandInfo, { merge: true })
+      .then(() => {this._alert.sendFloatNotification('Información actualizada')})
+  }
+
+  getBrandInfo(): Observable<iBrand> {
+    return this.fs.collection( '_admin' ).doc('brand_info').valueChanges()
   }
 }
